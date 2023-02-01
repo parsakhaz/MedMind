@@ -76,7 +76,7 @@ const Home = () => {
           <label class="block text-gray-700 font-medium" for="explanation">
             Explanation:
           </label>
-          <div class="w-1/2 p-3">
+          <div class="md:w-1/2 lg:w-1/3 p-3">
             <p id="explanation" className="p">
               {explanation}
             </p>
