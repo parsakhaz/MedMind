@@ -6,7 +6,7 @@ const Home = () => {
   const [explanation, setExplanation] = useState("");
   const [medicalDataLoading, setMedicalDataLoading] = useState(null);
   const configuration = new Configuration({
-    apiKey: "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",
+    apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY,
   });
   const openai = new OpenAIApi(configuration);
 
