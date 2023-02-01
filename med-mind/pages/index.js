@@ -6,7 +6,7 @@ const Home = () => {
   const [explanation, setExplanation] = useState("");
   const [medicalDataLoading, setMedicalDataLoading] = useState(null);
   const configuration = new Configuration({
-    apiKey: "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",
+    apiKey: "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",
   });
   const openai = new OpenAIApi(configuration);
 
@@ -20,6 +20,9 @@ const Home = () => {
     // Update medical data loading state with true
     setMedicalDataLoading(true);
 
+    // Implement check to make sure it is not a blank submission
+    if (medicalData != "") {
+
     let response = await openai.createCompletion({
       model: "text-davinci-003",
       prompt:
@@ -30,7 +33,7 @@ const Home = () => {
       frequency_penalty: 0,
       presence_penalty: 0,
     });
-
+    
     // remove loading text
     explanationElement.classList.add("hidden");
 
@@ -39,6 +42,9 @@ const Home = () => {
 
     // Update medical data loading state with false to allow explanation to conditionally render
     setMedicalDataLoading(false);
+  } else {
+    explanationElement.innerText = "You did not submit anything, please submit again."
+  }
   };
 
   return (
